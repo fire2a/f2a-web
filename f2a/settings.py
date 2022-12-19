@@ -55,7 +55,7 @@ ROOT_URLCONF = 'f2a.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [Path.cwd().joinpath('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +76,11 @@ WSGI_APPLICATION = 'f2a.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'f2a_db',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
     }
 }
 
@@ -116,8 +119,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+# Directorio donde va a crear la carpeta de static files
+STATIC_ROOT = Path.cwd().joinpath('static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    Path.cwd().joinpath('f2a/static')
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
