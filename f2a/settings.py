@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
+    'researcher.apps.ResearcherConfig',
+    'paper.apps.PaperConfig',
+    'contact.apps.ContactConfig',
+    'news.apps.NewsConfig',
+    'project.apps.ProjectConfig',
+    'research.apps.ResearchConfig',
+    'tools.apps.ToolsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,12 +128,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 # Directorio donde va a crear la carpeta de static files
-STATIC_ROOT = Path.cwd().joinpath('static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    Path.cwd().joinpath('f2a/static')
+    os.path.join(BASE_DIR, "f2a/static")
 ]
+
+# Media Folder Settings
+MEDIA_ROOT = Path.cwd().joinpath('media')
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'lucasmurrayh@gmail.com'
+EMAIL_HOST_PASSWORD = 'ozhkerbdsouyruhe'
+ALLOWED_HOSTS = []

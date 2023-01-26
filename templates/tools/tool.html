@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} | {{ tool.name }}{% endblock %}
+{% block page_name %} {{ tool.name }} {% endblock %}
+{% block content %}
+
+<div class="container-xxl py-5 text-center">
+    <h2>{{ tool.name }}</h2>
+    <div>
+        <p>{{ tool.description }}</p>
+    </div>
+    <a href="{{ tool.link }}">Link a la página original</a>
+    
+    {% if tool.authors.all %}
+        <h4>Autores:</h4>
+        {% for author in tool.authors.all %}
+            <div>
+                <a href="{% url 'researcher' author.id %}">{{ author.name }} {{ author.last_name }}</a>
+            </div>    
+        {% endfor %}
+    {% endif %}
+    
+    {% if tool.paper.all %}
+        <h4>Papers:</h4>
+        {% for paper in tool.paper.all %}
+            <div>
+                <a href="{% url 'paper' paper.id %}">{{ paper.title }}</a>
+            </div>    
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

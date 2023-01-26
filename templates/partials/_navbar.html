@@ -1,45 +1,23 @@
 {% load static %}
-<!-- header section start -->
-<div class="header_section">
-    <div class="header_main">
-       <div class="mobile_menu">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-             <div class="logo_mobile"><a href="index.html"><img src="{% static 'images/logo.png' %}"></a></div>
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                   <li class="nav-item">
-                      <a class="nav-link" href="index.html">Home</a>
-                   </li>
-                   <li class="nav-item">
-                      <a class="nav-link" href="about.html">About</a>
-                   </li>
-                   <li class="nav-item">
-                      <a class="nav-link" href="services.html">Services</a>
-                   </li>
-                   <li class="nav-item">
-                      <a class="nav-link " href="blog.html">Blog</a>
-                   </li>
-                   <li class="nav-item">
-                      <a class="nav-link " href="contact.html">Contact</a>
-                   </li>
-                </ul>
-             </div>
-          </nav>
-       </div>
-       <div class="container-fluid">
-          <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png' %}"></a></div>
-          <div class="menu_main">
-             <ul>
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact us</a></li>
-             </ul>
-          </div>
-       </div>
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="	fas fa-fire-alt"></i>F2A</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+            <a class="nav-link" href="{% url 'about' %}">¿Quienes somos?</a>
+            <a class="nav-link" href="{% url 'papers' %}">Investigación</a>
+            <a class="nav-link" href="{% url 'projects' %}">Proyectos</a>
+            <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+            <a class="nav-link" href="{% url 'tools' %}">Herramientas</a>
+            <a class="nav-link" href="{% url 'contact_us' %}">Contacto</a>
+        </div>
     </div>
+</nav>
+<!-- Navbar End -->

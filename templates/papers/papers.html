@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} | Investigación {% endblock %}
+{% block page_name %} Investigación {% endblock %}
+{% block content %}}
+<div class="container-xxl py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-3">Investigación</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at semper dui. Nunc mollis, felis porttitor vulputate placerat, turpis lectus tempus lacus, vitae consectetur urna mi in nisi. Integer eget semper est, et laoreet erat. Duis aliquet, orci nec faucibus varius, ante libero ultrices urna, finibus tristique libero elit ac augue. Nunc quis dolor consectetur, varius nunc non, luctus nibh. In eget malesuada dui. Morbi viverra, erat et ultricies blandit, leo neque egestas enim, non feugiat nisi est vel nibh.</p>
+        </div>
+            <div class="container wow fadeInUp py-5">
+                    <div class="p-4 border">
+                        {% include 'partials/_search_paper.html' %}
+                    </div>
+            </div>
+            <div class="container py-4">
+                <div class="row g-4 justify-content-center">
+                    {% if papers %}
+                        {% for paper in papers %}
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="position-relative overflow-hidden">
+                                <div class="card" style="width: 18rem;">
+                                    <a href="{% url 'paper' paper.id %}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{paper.title}}</h5>
+                                            <h6 class="card-subtitle text-muted">{{ paper.get_type_display }}</h6>
+                                            {% if paper.topic.all %}
+                                                {% for research in paper.topic.all %}
+                                                    <div>
+                                                        <h6 class="text-muted">{{ research.name }}</h6>
+                                                    </div>    
+                                                {% endfor %}
+                                                {% endif %}
+                                                {% if paper.authors.all %}
+                                                <h6 class="card-subtitle text-muted">Autores:</h6>
+                                                    {% for author in paper.authors.all %}
+                                                        <a href="{% url 'researcher' author.id %}">{{ author.name }} {{author.last_name}}</a>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>  
+</div>
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} | Researchers {% endblock %}
+{% block page_name %} Researchers {% endblock %}
+
+{% block content %}
+<!-- {% include 'partials/_search_form.html' %} -->
+{% if researchers %}
+    <h3>Researchers</h3>
+    {% for researcher in researchers %}
+        <div>
+            <a href="{% url 'researcher' researcher.id %}">
+                <h4>{{ researcher.name }} {{ researcher.last_name }}</h4>
+            </a>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
+

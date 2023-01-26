@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %} | Noticias {% endblock %}
+{% block page_name %} Noticias {% endblock %}
+
+{% block content %}
+
+<div class="container-xxl py-5 wow fadeInUp">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="mb-3">Noticias</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at semper dui. Nunc mollis, felis porttitor vulputate placerat, turpis lectus tempus lacus, vitae consectetur urna mi in nisi. Integer eget semper est, et laoreet erat. Duis aliquet, orci nec faucibus varius, ante libero ultrices urna, finibus tristique libero elit ac augue. Nunc quis dolor consectetur, varius nunc non, luctus nibh. In eget malesuada dui. Morbi viverra, erat et ultricies blandit, leo neque egestas enim, non feugiat nisi est vel nibh.</p>
+        </div>
+        {% if news %}
+            <div class="owl-carousel testimonial-carousel position-relative">
+                {% for new in news %}
+                <a href="{% url 'new' new.id %}">
+                    <div class="testimonial-item text-center">
+                        <div class="card-body">
+                            <div class="overflow-hidden">
+                                <img class="border p-2 mx-auto mb-3" src="{{ new.image.url }}">
+                            </div>
+                            <h5 class="card-title">{{ new.title }}</h5>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% if featured %}
+    <div class="container">
+        <div class="text-center">
+            <h2 class="mb-3">Destacadas</h1>
+        </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                {% for new in featured %}
+                <a href="{% url 'new' new.id %}">
+                    <div class="testimonial-item text-center">
+                        <div class="card-body">
+                            <div class="overflow-hidden">
+                                <img class="border p-2 mx-auto mb-3" src="{{ new.image.url }}">
+                            </div>
+                            <h5 class="card-title">{{ new.title }}</h5>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+        
+
+{% endblock %}
+

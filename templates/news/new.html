@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} | {{ new.title }}{% endblock %}
+{% block page_name %} {{ new.title }} {% endblock %}
+{% block content %}
+<div class="container-xxl py-5 text-center">
+    <h2>{{ new.title }}</h2>
+    <h4>{{ new.date }}</h4>
+    <img class="border p-2 mx-auto mb-3" src="{{ new.image.url }}">
+    <div>
+        <p>{{ new.description|linebreaks }}</p>
+    </div>
+    <a href="{{ new.link }}">Publicación original</a>
+    
+    {% if new.mentioned.all %}
+        <h4>Mencionados:</h4>
+        {% for author in new.mentioned.all %}
+            <div>
+                <a href="{% url 'researcher' author.id %}">{{ author.name }} {{ author.last_name }}</a>
+            </div>    
+        {% endfor %}
+    {% endif %}
+    
+    
+    {% if new.projects.all %}
+        <h4>Proyectos asociados:</h4>
+        {% for project in new.projects.all %}
+            <div>
+                <a href="{% url 'project' project.id %}">{{ project.name }}</a>
+            </div>    
+        {% endfor %}
+    {% endif %}
+    
+    {% if new.related_news.all %}
+        <h4>Leer tambien:</h4>
+        {% for new in new.related_news.all %}
+            <div>
+                <a href="{% url 'new' new.id %}">{{ new.title }}</a>
+            </div>    
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
