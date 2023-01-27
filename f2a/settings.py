@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'f2a_db',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': '',
         'HOST': 'localhost',
     }
 }
@@ -146,6 +146,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'lucasmurrayh@gmail.com'
-EMAIL_HOST_PASSWORD = 'ozhkerbdsouyruhe'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = []

@@ -15,6 +15,13 @@
             <h5>Fecha de publicación: {{ paper.date }}</h5>
             <a href="{{ paper.link }}">Link a la página original</a>
         </div>
+        {% if paper.file %}
+        <div>
+            <a href="/media/{{paper.file }}" download>
+                <button class="btn btn-primary">Download</button>
+            </a>
+        </div>
+        {% endif %}
         
         {% if paper.authors.all %}
         <div class="wow fadeInUp" data-wow-delay="0.3s">

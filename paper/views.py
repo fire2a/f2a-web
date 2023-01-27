@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Paper
 from researcher.models import Researcher
 from research.models import Research
+from django.http import HttpResponse, Http404
+import os
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -57,6 +60,7 @@ def search(request):
 
 def paper(request, paper_id):
     paper = get_object_or_404(Paper, pk = paper_id)
+    print(paper.file)
     context = {
         'paper': paper
     }
