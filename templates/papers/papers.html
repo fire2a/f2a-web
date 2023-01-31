@@ -5,7 +5,7 @@
 <div class="container-xxl py-5">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h1 class="mb-3">Investigación</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at semper dui. Nunc mollis, felis porttitor vulputate placerat, turpis lectus tempus lacus, vitae consectetur urna mi in nisi. Integer eget semper est, et laoreet erat. Duis aliquet, orci nec faucibus varius, ante libero ultrices urna, finibus tristique libero elit ac augue. Nunc quis dolor consectetur, varius nunc non, luctus nibh. In eget malesuada dui. Morbi viverra, erat et ultricies blandit, leo neque egestas enim, non feugiat nisi est vel nibh.</p>
+            <p>En esta sección se puede encontrar todo el material de investigación y análisis de los investigadores del Fire Advanced Analytics. Documentos de trabajo, papers, informes, presentaciones de seminarios y otros están disponibles para la descarga gratuita citando a nuestro centro de estudios y a sus respectivos autores; estos son responsables de las opiniones vertidas en cada documento.</p>
         </div>
             <div class="container wow fadeInUp py-5">
                     <div class="p-4 border">
@@ -25,9 +25,9 @@
                                             <h6 class="card-subtitle text-muted">{{ paper.get_type_display }}</h6>
                                             {% if paper.topic.all %}
                                                 {% for research in paper.topic.all %}
-                                                    <div>
-                                                        <h6 class="text-muted">{{ research.name }}</h6>
-                                                    </div>    
+                                                <div>
+                                                    <a href="{% url 'research' research.id %}">{{ research.name }}</a>
+                                                </div>  
                                                 {% endfor %}
                                                 {% endif %}
                                                 {% if paper.authors.all %}

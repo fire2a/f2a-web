@@ -6,7 +6,9 @@ def index(request):
     return render(request, 'pages/contact_us.html')
 
 def send(request):
-    subject = request.GET['subject']
     message = request.GET['message']
-    send_mail(subject=subject, message=message, from_email='setting.EMAIL_HOST_USER', recipient_list=['lucasmurrayh@gmail.com'], fail_silently=False)
+    sender = request.GET['name']
+    subject = sender + ": " + request.GET['subject']
+    address = request.GET['email']
+    send_mail(subject=subject, message=message, from_email='setting.EMAIL_HOST_USER', recipient_list=['lucasmurrayh@gmail.com', address], fail_silently=False)
     return render(request, 'pages/contact_us.html')

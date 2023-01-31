@@ -20,7 +20,7 @@
     <div>
         <span class="reverse">{{ researcher.phone }}</span>
     </div>
-    
+
 
     {% if researcher.google_scholar %}
         <div>
@@ -32,7 +32,7 @@
     <div>
         <a href="{{ researcher.orcid }}">Orcid</a>
     </div>
-{% endif %}
+    {% endif %}
 
     {% if researcher.papers.all %}
         <h4>Papers:</h4>
@@ -55,9 +55,9 @@
     {% if researcher.research_line.all %}
         <h4>Lineas de investigacion:</h4>
         {% for research in researcher.research_line.all %}
-            <h6>
-                {{ research.name }}
-            </h6>  
+            <div>
+                <a href="{% url 'research' research.id %}">{{ research.name }}</a>
+            </div>
         {% endfor %}
     {% endif %}
     

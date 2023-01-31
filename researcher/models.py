@@ -11,17 +11,11 @@ class Researcher(models.Model):
     active = models.BooleanField(default=True)
     DIRECTOR = 'DIR'
     INVESTIGADOR = 'INV'
-    POSTDOC = "POST"
-    PHD = 'PHD'
-    MAGISTER = 'MG'
-    PREGRADO = 'PG'
+    THESIS = 'TH'
     POSITION_CHOICES = [
         (DIRECTOR, 'Director'),
         (INVESTIGADOR, 'Investigador'),
-        (POSTDOC, 'Postdoc'),
-        (PHD, 'Phd'),
-        (MAGISTER, 'Magister'),
-        (PREGRADO, 'Pregrado'),
+        (THESIS, 'Tesista'),
     ]
     position = models.CharField(choices=POSITION_CHOICES, max_length=100)
     photo = models.ImageField(upload_to='img/researchers/', blank=True)

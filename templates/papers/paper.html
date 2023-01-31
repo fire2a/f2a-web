@@ -39,11 +39,9 @@
         <div class="wow fadeInUp" data-wow-delay="0.3s">
             <h4>Temas:</h4>
             {% for research in paper.topic.all %}
-                <div class="wow fadeInUp" data-wow-delay="0.3s">
-                    <h6>
-                        {{ research.name }}
-                    </h6>
-                </div>    
+            <div>
+                <a href="{% url 'research' research.id %}">{{ research.name }}</a>
+            </div> 
             {% endfor %}
         </div>
         {% endif %}

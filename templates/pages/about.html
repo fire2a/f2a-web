@@ -36,20 +36,10 @@
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="text-center">
         <h1 class="mb-5">Alianzas</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at semper dui. Nunc mollis, felis porttitor vulputate placerat, turpis lectus tempus lacus, vitae consectetur urna mi in nisi. Integer eget semper est, et laoreet erat. Duis aliquet, orci nec faucibus varius, ante libero ultrices urna, finibus tristique libero elit ac augue. Nunc quis dolor consectetur, varius nunc non, luctus nibh. In eget malesuada dui. Morbi viverra, erat et ultricies blandit, leo neque egestas enim, non feugiat nisi est vel nibh.</p>
+        <p>Para lograr aportar en la toma de decisiones a nivel nacional e internacional, hemos logrado afiatar lazos con diferentes instituciones y centros. Con ellos hemos trabajado en diversos proyectos, así como también hemos aportado mutuamente en la generación de datos necesarios para seguir avanzando en la investigación sobre incendios forestales. </p>
     </div>
     <div class="row g-4 justify-content-center">
         <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="team-item">
-                    <a href="https://fire-res.eu/">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/fire-res.jfif' %}" style="width: 200px;" alt="Logo">
-                            </div>
-                        </div>
-        
-                    </a>
-                </div>
                 <div class="team-item">
                     <a href="https://isci.cl/">
                         <div class="team-item">
@@ -174,35 +164,35 @@
     </div>
 {% endif %}
 
-{% if postdocs %}
+{% if thesists %}
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Postdocs</h1>
+                <h1 class="mb-5">Tesistas</h1>
             </div>
             <div class="row g-4 justify-content-center">
-                {% for postdoc in postdocs %}
+                {% for thesist in thesists %}
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' postdoc.id %}">
+                        <a href="{% url 'researcher' thesist.id %}">
                             <div class="team-item bg-light">
                                 <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ postdoc.photo.url }}" alt="">
+                                    <img class="img-fluid" src="{{ thesist.photo.url }}" alt="">
                                 </div>
                                 <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                                     <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if postdoc.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ postdoc.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% if thesist.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.github }}"><i class="fab fa-github fa-lg"></i></a>
                                         {% endif %}
-                                        {% if postdoc.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ postdoc.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% if thesist.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
                                         {% endif %}
-                                        {% if postdoc.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ postdoc.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% if thesist.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
                                         {% endif %}
                                     </div>
                                 </div>
                                 <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ postdoc.name }} {{ postdoc.last_name }}</h5>
+                                    <h5 class="mb-0">{{ thesist.name }} {{ thesist.last_name }}</h5>
                                 </div>
                             </div>
                         </a>
@@ -214,110 +204,6 @@
     </div>
 {% endif %}
 
-{% if phds or masters %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Alumnos de Postgrado</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for phd in phds %} 
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' phd.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ phd.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if phd.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ phd.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if phd.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ phd.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if phd.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ phd.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ phd.name }} {{ phd.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-                {% for master in masters %} 
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' master.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ master.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if master.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ master.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if master.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ master.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if master.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ master.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ master.name }} {{ master.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-{% if undergraduates %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Alumnos de Pregrado</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for undergraduate in undergraduates %} 
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"> 
-                    <a href="{% url 'researcher' undergraduate.id %}">
-                        <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ undergraduate.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if undergraduate.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ undergraduate.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if undergraduate.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ undergraduate.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if undergraduate.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ undergraduate.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ undergraduate.name }} {{ undergraduate.last_name }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
 
 {% if unactives %}
     <div class="container-xxl py-5">
