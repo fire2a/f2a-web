@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'f2a.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
+        'NAME': 'f2a_db',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
     }
 }
@@ -143,12 +143,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS = []
 
 try:
     from .local_settings import *
