@@ -10,12 +10,20 @@ class Researcher(models.Model):
     phone = models.CharField(max_length=100)
     active = models.BooleanField(default=True)
     DIRECTOR = 'DIR'
+    SUBDIRECTOR = 'SUBDIR'
     INVESTIGADOR = 'INV'
-    THESIS = 'TH'
+    THESIS_UG = 'TH_UG'
+    THESIS_MS = 'TH_PG'
+    THESIS_PHD = 'TH_PHD'
+    COLABORATOR = 'COLAB'
     POSITION_CHOICES = [
         (DIRECTOR, 'Director'),
-        (INVESTIGADOR, 'Investigador'),
-        (THESIS, 'Tesista'),
+        (SUBDIRECTOR, 'Subdirector'),
+        (INVESTIGADOR, 'Investigador principal'),
+        (COLABORATOR, 'Colaborador'),
+        (THESIS_UG, 'Alumno de Pregrado'),
+        (THESIS_MS, 'Alumno de Magister'),
+        (THESIS_PHD, 'Alumno de Doctorado'),
     ]
     position = models.CharField(choices=POSITION_CHOICES, max_length=100)
     photo = models.ImageField(upload_to='img/researchers/', blank=True)

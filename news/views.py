@@ -4,12 +4,14 @@ from .models import News
 # Create your views here.
 def index(request):
     news = News.objects.order_by('-date')
+    events = news.filter(event=True)
     featured = news.filter(featured=True)
     if len(news) > 20:
         news = news[:20]
     context = {
         'news': news,
         'featured': featured,
+        'events': events
     }
     return render(request, 'news/news.html', context)
 

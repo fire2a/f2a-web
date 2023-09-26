@@ -5,9 +5,33 @@
 {% block content %}
 
 <div class="container-xxl py-5 wow fadeInUp">
+    {% if events %}
     <div class="container">
         <div class="text-center">
-            <h1 class="mb-3">Noticias</h1>
+            <h1 class="mb-3">Eventos</h1>
+            <p>Con la intención de aportar y ser parte del acontecer nacional e internacional, mostramos en esta sección las noticias relacionadas a nuestros temas de investigación, así como también la participación y aportes de los investigadores del Fire Advanced Analytics en distintos medios de comunicación.</p>
+        </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                {% for new in events %}
+                <a href="{% url 'new' new.id %}">
+                    <div class="testimonial-item text-center">
+                        <div class="card-body">
+                            <div class="overflow-hidden">
+                                <img class="border p-2 mx-auto mb-3" src="{{ new.image.url }}">
+                            </div>
+                            <h5 class="card-title">{{ new.title }}</h5>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="text-center">
+            <h1 class="mb-3">Fire2A en la prensa</h1>
             <p>Con la intención de aportar y ser parte del acontecer nacional e internacional, mostramos en esta sección las noticias relacionadas a nuestros temas de investigación, así como también la participación y aportes de los investigadores del Fire Advanced Analytics en distintos medios de comunicación.</p>
         </div>
         {% if news %}

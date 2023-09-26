@@ -12,11 +12,13 @@ class Paper(models.Model):
     PRESENTATION = 'PRST'
     CONFERENCE = 'CON'
     THESIS = 'TH'
+    CHAPTER = 'CH'
     PUBLICATION_CHOICES = [
         (JOURNAL, 'Journal'),
         (PRESENTATION, 'Presentation'),
         (CONFERENCE, 'Conference'),
         (THESIS, 'Thesis'),
+        (CHAPTER, 'Chapter'),
     ]
     type = models.CharField(choices=PUBLICATION_CHOICES, max_length=100)
     authors = models.ManyToManyField('researcher.Researcher', blank=True, related_name="papers")

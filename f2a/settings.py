@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'offers.apps.OffersConfig',
     'pages.apps.PagesConfig',
     'researcher.apps.ResearcherConfig',
     'paper.apps.PaperConfig',
