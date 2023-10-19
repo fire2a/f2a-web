@@ -5,7 +5,10 @@ from .models import Researcher
 
 def researcher(request, researcher_id):
     researcher = get_object_or_404(Researcher, pk = researcher_id)
+    mail = researcher.mail.split('@')
     context = {
-        'researcher': researcher
+        'researcher': researcher,
+        'mail': mail[0],
+        'domain': mail[1],
     }
     return render(request, 'researcher/researcher.html', context)

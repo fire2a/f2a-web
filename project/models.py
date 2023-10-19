@@ -8,6 +8,7 @@ class Project(models.Model):
     start_date = models.DateField(default=date.today)
     end_date = models.DateField(default=date.today().replace(year = date.today().year + 5), blank=True)
     link = models.URLField(blank=True)
+    responsible = models.ForeignKey('researcher.Researcher', blank=True, related_name = "responsable_project", on_delete=models.CASCADE, null = "True")
     participants = models.ManyToManyField('researcher.Researcher', blank=True, related_name="projects")
     research_lines = models.ManyToManyField('research.Research', blank=True, related_name="projects")
     papers = models.ManyToManyField('paper.Paper', blank=True, related_name="projects")

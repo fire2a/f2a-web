@@ -8,7 +8,7 @@ class Offer(models.Model):
     pub_date = models.DateField(default=date.today)
     payed = models.BooleanField(default=False)
     pay = models.IntegerField(blank=True, default=0, )
-    proyect = models.ManyToManyField('project.Project', blank=True, related_name="related_projects")
+    project = models.ManyToManyField('project.Project', blank=True, related_name="offers")
     DOCTORAL_STUDENT = 'PHD'
     MASTER_STUDENT = 'MG'
     UG_STUDENT = 'UG'
@@ -35,5 +35,6 @@ class Offer(models.Model):
         (UNPUBLISHED, 'unpublished'),
     ] 
     offer_status = models.CharField(choices=STATUS_CHOICES, max_length=100, default=UNPUBLISHED)
+    
     def __str__(self):
         return self.name

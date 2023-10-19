@@ -10,9 +10,18 @@
     <div class="wow fadeInUp" data-wow-delay="0.3s">
         <a href="{{ project.link }}">Link a la página original</a>
     </div>
+    {% if project.responsible %}
+    <div class="wow fadeInUp" data-wow-delay="0.3s">
+        <h4>Investigador responsable:</h4>
+        <div>
+            <a href="{% url 'researcher' project.responsible.id %}">{{ project.responsible.name }} {{ project.responsible.last_name }}</a>
+        </div>    
+    </div>
+    {% endif %}
+
     {% if project.participants.all %}
     <div class="wow fadeInUp" data-wow-delay="0.3s">
-        <h4>Participantes:</h4>
+        <h4>Colaboradores:</h4>
         {% for participant in project.participants.all %}
             <div>
                 <a href="{% url 'researcher' participant.id %}">{{ participant.name }} {{ participant.last_name }}</a>

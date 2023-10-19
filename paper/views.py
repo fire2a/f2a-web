@@ -60,7 +60,6 @@ def search(request):
 
 def paper(request, paper_id):
     paper = get_object_or_404(Paper, pk = paper_id)
-    print(paper.file)
     context = {
         'paper': paper
     }
