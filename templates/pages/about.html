@@ -3,7 +3,9 @@
 {% block page_name %} ¿Quienes Somos? {% endblock %}
 {% load static %}
 {% block content %}
+ 
 <div class="container-xxl py-5">
+    <!--
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -16,12 +18,12 @@
             </div>
         </div>
     </div>
+    -->
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-4">Conoce a nuestro equipo</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
+                <h1 class="mb-4">Meet our team</h1>
+                <p class="mb-4">We are an interdisciplinary group of researchers committed to improving forest fire management in Chile and the world. We address this challenging global problem through the development of quantitative research at the highest level and the development of technological tools to support decision making. We stand out for the use of the most advanced analytical tools in the field of forest fires, thanks to the different disciplines that are integrated in our team.</p>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s" style="min-height: 400px;">
                 <div class="position-relative h-100">
@@ -31,58 +33,7 @@
         </div>
     </div>
 </div>
-
-<!-- Aliances -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="text-center">
-        <h1 class="mb-5">Alianzas</h1>
-        <p>Para lograr aportar en la toma de decisiones a nivel nacional e internacional, hemos logrado afiatar lazos con diferentes instituciones y centros. Con ellos hemos trabajado en diversos proyectos, así como también hemos aportado mutuamente en la generación de datos necesarios para seguir avanzando en la investigación sobre incendios forestales. </p>
-    </div>
-    <div class="row g-4 justify-content-center">
-        <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="team-item">
-                    <a href="https://isci.cl/">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/isci.png' %}"style="width: 400px;">
-                            </div>
-                        </div>
-        
-                    </a>
-                </div>
-                <div class="team-item">
-                    <a href="https://www.conaf.cl/">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/conaf.png' %}" style="width: 400px;">
-                            </div>
-                        </div>
-        
-                    </a>
-                </div>
-                <div class="team-item">
-                    <a href="https://ingenieria.uchile.cl/">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid mx-auto mb-3 center" src="{% static 'img/uchile-logo.webp' %}" style="width: 300px;">
-                            </div>
-                        </div>
-        
-                    </a>
-                </div>
-                <div class="team-item">
-                    <a href="https://www.ctfc.cat/es/?lang=en#">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/ctfc_logo.jpg' %}" style="width: 300px;">
-                            </div>
-                        </div>
-        
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
 {% if directors %}
     <div class="container-xxl py-5">
@@ -486,5 +437,58 @@
         </div>
     </div>
 {% endif %}
+
+<!-- Aliances -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="text-center">
+        <h1 class="mb-5">Alianzas</h1>
+        <p>Para lograr aportar en la toma de decisiones a nivel nacional e internacional, hemos logrado afiatar lazos con diferentes instituciones y centros. Con ellos hemos trabajado en diversos proyectos, así como también hemos aportado mutuamente en la generación de datos necesarios para seguir avanzando en la investigación sobre incendios forestales. </p>
+    </div>
+    <div class="row g-4 justify-content-center">
+        <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="team-item">
+                    <a href="https://isci.cl/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/isci.png' %}"style="width: 400px;">
+                            </div>
+                        </div>
+        
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.conaf.cl/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/conaf.png' %}" style="width: 400px;">
+                            </div>
+                        </div>
+        
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://ingenieria.uchile.cl/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3 center" src="{% static 'img/uchile-logo.webp' %}" style="width: 300px;">
+                            </div>
+                        </div>
+        
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.ctfc.cat/es/?lang=en#">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/ctfc_logo.jpg' %}" style="width: 300px;">
+                            </div>
+                        </div>
+        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
