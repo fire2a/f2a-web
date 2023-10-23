@@ -9,10 +9,10 @@
     <div>
         <p>{{ new.description|linebreaks }}</p>
     </div>
-    <a href="{{ new.link }}">Publicación original</a>
+    <a href="{{ new.link }}">Original publication</a>
     
     {% if new.mentioned.all %}
-        <h4>Mencionados:</h4>
+        <h4>Featured:</h4>
         {% for author in new.mentioned.all %}
             <div>
                 <a href="{% url 'researcher' author.id %}">{{ author.name }} {{ author.last_name }}</a>
@@ -22,7 +22,7 @@
     
     
     {% if new.projects.all %}
-        <h4>Proyectos asociados:</h4>
+        <h4>Related projects:</h4>
         {% for project in new.projects.all %}
             <div>
                 <a href="{% url 'project' project.id %}">{{ project.name }}</a>
@@ -31,7 +31,7 @@
     {% endif %}
     
     {% if new.related_news.all %}
-        <h4>Leer tambien:</h4>
+        <h4>See also:</h4>
         {% for new in new.related_news.all %}
             <div>
                 <a href="{% url 'new' new.id %}">{{ new.title }}</a>

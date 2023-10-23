@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% block title %} | Noticias {% endblock %}
-{% block page_name %} Noticias {% endblock %}
+{% block title %} | News {% endblock %}
+{% block page_name %} News {% endblock %}
 
 {% block content %}
 
@@ -8,8 +8,8 @@
     {% if events %}
     <div class="container">
         <div class="text-center">
-            <h1 class="mb-3">Eventos</h1>
-            <p>Con la intención de aportar y ser parte del acontecer nacional e internacional, mostramos en esta sección las noticias relacionadas a nuestros temas de investigación, así como también la participación y aportes de los investigadores del Fire Advanced Analytics en distintos medios de comunicación.</p>
+            <h1 class="mb-3">Events</h1>
+            <p>With the intention of contributing and being part of the national and international events, we show in this section the news related to our research topics, as well as the participation and contributions of Fire Advanced Analytics researchers in different media.</p>
         </div>
             <div class="owl-carousel testimonial-carousel position-relative">
                 {% for new in events %}
@@ -31,8 +31,7 @@
 
     <div class="container">
         <div class="text-center">
-            <h1 class="mb-3">Fire2A en la prensa</h1>
-            <p>Con la intención de aportar y ser parte del acontecer nacional e internacional, mostramos en esta sección las noticias relacionadas a nuestros temas de investigación, así como también la participación y aportes de los investigadores del Fire Advanced Analytics en distintos medios de comunicación.</p>
+            <h1 class="mb-3">Fire2A in the media</h1>
         </div>
         {% if news %}
             <div class="owl-carousel testimonial-carousel position-relative">
@@ -55,7 +54,7 @@
     {% if featured %}
     <div class="container">
         <div class="text-center">
-            <h2 class="mb-3">Destacadas</h1>
+            <h2 class="mb-3">Featured</h1>
         </div>
             <div class="owl-carousel testimonial-carousel position-relative">
                 {% for new in featured %}

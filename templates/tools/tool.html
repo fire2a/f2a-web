@@ -8,10 +8,10 @@
     <div>
         <p>{{ tool.description }}</p>
     </div>
-    <a href="{{ tool.link }}">Link a la página original</a>
+    <a href="{{ tool.link }}">Link to original page</a>
     
     {% if tool.authors.all %}
-        <h4>Autores:</h4>
+        <h4>Authors:</h4>
         {% for author in tool.authors.all %}
             <div>
                 <a href="{% url 'researcher' author.id %}">{{ author.name }} {{ author.last_name }}</a>
@@ -20,7 +20,7 @@
     {% endif %}
     
     {% if tool.paper.all %}
-        <h4>Papers:</h4>
+        <h4>Related papers:</h4>
         {% for paper in tool.paper.all %}
             <div>
                 <a href="{% url 'paper' paper.id %}">{{ paper.title }}</a>

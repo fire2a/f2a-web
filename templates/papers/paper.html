@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="wow fadeInUp" data-wow-delay="0.3s">
-            <h5>Fecha de publicación: {{ paper.date }}</h5>
-            <a href="{{ paper.link }}">Link a la página original</a>
+            <h5>Publication date: {{ paper.date }}</h5>
+            <a href="{{ paper.link }}">Original link</a>
         </div>
         {% if paper.file %}
         <div>
@@ -25,7 +25,7 @@
         
         {% if paper.authors.all %}
         <div class="wow fadeInUp" data-wow-delay="0.3s">
-            <h4>Autores:</h4>
+            <h4>Authors:</h4>
             {% for author in paper.authors.all %}
                 <div class="wow fadeInUp" data-wow-delay="0.3s">
                     <a href="{% url 'researcher' author.id %}">{{ author.name }} {{author.last_name}}</a>
@@ -37,7 +37,7 @@
         
         {% if paper.topic.all %}
         <div class="wow fadeInUp" data-wow-delay="0.3s">
-            <h4>Temas:</h4>
+            <h4>Topics:</h4>
             {% for research in paper.topic.all %}
             <div>
                 <a href="{% url 'research' research.id %}">{{ research.name }}</a>

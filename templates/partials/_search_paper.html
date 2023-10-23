@@ -1,31 +1,31 @@
 
-<h5 class="mb-2">Filtrar por:</h5>
+<h5 class="mb-2">Filter by:</h5>
     <form action="{% url 'search_papers' %}" method="GET">
       <select name="type" id="type" class="form-select">
-        <option value="">Todos los tipos</option>
+        <option value="">All types</option>
         {% for id, type in types.items %}
           <option value="{{ id }}">{{ type }}</option>
         {% endfor %}
         </select><br>
         <select name="author" id="author" class="form-select">
-          <option value="">Todos los autores</option>
+          <option value="">All authors</option>
           {% for id, author in authors.items %}
             <option value="{{ id }}">{{ author }}</option>
           {% endfor %}
         </select><br>
         <select name="topic" id="topic" class="form-select">
-          <option value="">Todos las lineas de investigación</option>
+          <option value="">All topics</option>
           {% for id, topic in topics.items %}
             <option value="{{ id }}">{{ topic }}</option>
           {% endfor %}
         </select><br>
         <select name="year" id="year" class="form-select">
-          <option value="">Todas las fechas</option>
+          <option value="">All dates</option>
           {% for year in years %}
             <option value="{{ year }}">{{ year }}</option>
           {% endfor %}
         </select><br>
-        <label for="keyword" class="form-label">Buscar por palabra clave</label><br>
-        <input type="text" name="keyword" id="keyword" placeholder="Palabra clave" class="input-group"><br>
-        <button type="submit" value="Buscar" class="btn btn-primary w-100 py-3">Filtrar<br>
+        <label for="keyword" class="form-label">Search by keyword</label><br>
+        <input type="text" name="keyword" id="keyword" placeholder="keyword" class="input-group"><br>
+        <button type="submit" value="Buscar" class="btn btn-primary w-100 py-3">Filter<br>
   </form>
