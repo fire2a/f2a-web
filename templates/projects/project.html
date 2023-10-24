@@ -8,11 +8,20 @@
         <p class="mb-4">{{ project.description|linebreaks }}</p>
     </div>
     <div class="wow fadeInUp" data-wow-delay="0.3s">
-        <a href="{{ project.link }}">Link a la página original</a>
+        <a href="{{ project.link }}">Link to original page</a>
     </div>
+    {% if project.responsible %}
+    <div class="wow fadeInUp" data-wow-delay="0.3s">
+        <h4>Responsible researcher:</h4>
+        <div>
+            <a href="{% url 'researcher' project.responsible.id %}">{{ project.responsible.name }} {{ project.responsible.last_name }}</a>
+        </div>    
+    </div>
+    {% endif %}
+
     {% if project.participants.all %}
     <div class="wow fadeInUp" data-wow-delay="0.3s">
-        <h4>Participantes:</h4>
+        <h4>Colaborators:</h4>
         {% for participant in project.participants.all %}
             <div>
                 <a href="{% url 'researcher' participant.id %}">{{ participant.name }} {{ participant.last_name }}</a>
@@ -34,16 +43,16 @@
     {% endif %}
     {% if project.research_lines.all %}
     <div class="wow fadeInUp" data-wow-delay="0.3s">
-        <h4>Lineas de investigacion:</h4>
+        <h4>Research lines:</h4>
         {% for research in project.research_lines.all %}
             <div>
                 <a href="{% url 'research' research.id %}">{{ research.name }}</a>
             </div>    
         {% endfor %}
     </div>
-    
+    {% endif %}
 </div>
-{% endif %}
+
 
 
 

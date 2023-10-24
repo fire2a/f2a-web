@@ -12,5 +12,6 @@ class News(models.Model):
     research_lines = models.ManyToManyField('research.Research', blank=True, related_name="news")
     related_news = models.ManyToManyField('self', blank=True)
     date = models.DateField(default=date.today)
+    event = models.BooleanField(default=False)
     def __str__(self) -> str:
         return self.title

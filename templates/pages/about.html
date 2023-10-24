@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% block title %} | ¿Quienes Somos? {% endblock %}
-{% block page_name %} ¿Quienes Somos? {% endblock %}
+{% block title %} | Our team {% endblock %}
+{% block page_name %} Our team {% endblock %}
 {% load static %}
 {% block content %}
+ 
 <div class="container-xxl py-5">
+    <!--
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -16,27 +18,431 @@
             </div>
         </div>
     </div>
+    -->
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-4">Conoce a nuestro equipo</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
+                <h1 class="mb-4">Meet our team</h1>
+                <p class="mb-4">We are an interdisciplinary group of researchers committed to improving forest fire management in Chile and the world. We address this challenging global problem through the development of quantitative research at the highest level and the development of technological tools to support decision making. We stand out for the use of the most advanced analytical tools in the field of forest fires, thanks to the different disciplines that are integrated in our team.</p>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s" style="min-height: 400px;">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s" style="min-height: 300px;">
                 <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/team-1.jpg' %}" alt="" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/cierre-proyecto-Fondef-3.jpg' %}" alt="" style="object-fit: cover;">
                 </div>
             </div>
         </div>
     </div>
 </div>
+ 
+
+{% if directors %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Director</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for director in directors %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' director.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ director.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if director.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if director.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if director.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ director.name }} {{ director.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if subdirectors %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Subdirector</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for subdirector in subdirectors %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' subdirector.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ subdirector.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if subdirector.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ subdirector.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if subdirector.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ subdirector.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if subdirector.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ subdirector.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ subdirector.name }} {{ subdirector.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if principal_investigators %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Principal investigators</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for principal_investigator in principal_investigators %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' principal_investigator.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center text-center">
+                                    <img class="img-fluid" src="{{ principal_investigator.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if principal_investigator.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ principal_investigator.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if principal_investigator.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ principal_investigator.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if principal_investigator.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ principal_investigator.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ principal_investigator.name }} {{ principal_investigator.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if assoc_investigators %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Associated investigators</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for assoc_investigator in assoc_investigators %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' assoc_investigator.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ assoc_investigator.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if assoc_investigator.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ assoc_investigator.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if assoc_investigator.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ assoc_investigator.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if assoc_investigator.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ assoc_investigator.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ assoc_investigator.name }} {{ assoc_investigator.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if colab_investigators %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Collaborating investigators</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for colab_investigator in colab_investigators %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' colab_investigator.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ colab_investigator.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if colab_investigator.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ colab_investigator.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if colab_investigator.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ colab_investigator.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if colab_investigator.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ colab_investigator.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ colab_investigator.name }} {{ colab_investigator.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if foreign_investigators %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">International collaborators</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for foreign_investigator in foreign_investigators %} 
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' foreign_investigator.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ foreign_investigator.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if foreign_investigator.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ foreign_investigator.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if foreign_investigator.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ foreign_investigator.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if foreign_investigator.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ foreign_investigator.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ foreign_investigator.name }} {{ foreign_investigator.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if phd %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Phd students</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for thesist in phd %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' thesist.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ thesist.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if thesist.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ thesist.name }} {{ thesist.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if pg %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Postgraduate students</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for thesist in pg %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' thesist.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ thesist.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if thesist.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ thesist.name }} {{ thesist.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if ug %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Pregraduate students</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for thesist in ug %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' thesist.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ thesist.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if thesist.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if thesist.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ thesist.name }} {{ thesist.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+{% if unactives %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Former members</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for unactive in unactives %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{% url 'researcher' unactive.id %}">
+                            <div class="team-item bg-light">
+                                <div class="overflow-hidden text-center">
+                                    <img class="img-fluid" src="{{ unactive.photo.url }}" alt="">
+                                </div>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                        {% if unactive.github %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.github }}"><i class="fab fa-github fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if unactive.linkedin %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        {% endif %}
+                                        {% if unactive.google_scholar %}
+                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h5 class="mb-0">{{ unactive.name }} {{ unactive.last_name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
 
 <!-- Aliances -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="text-center">
-        <h1 class="mb-5">Alianzas</h1>
-        <p>Para lograr aportar en la toma de decisiones a nivel nacional e internacional, hemos logrado afiatar lazos con diferentes instituciones y centros. Con ellos hemos trabajado en diversos proyectos, así como también hemos aportado mutuamente en la generación de datos necesarios para seguir avanzando en la investigación sobre incendios forestales. </p>
+        <h1 class="mb-5">Alliances</h1>
+        <p>In order to contribute to national and international decision making, we have managed to strengthen ties with different institutions and centers. We have worked with them in several projects, as well as we have contributed mutually in the generation of data necessary to continue advancing in forest fire research. </p>
     </div>
     <div class="row g-4 justify-content-center">
         <div class="owl-carousel testimonial-carousel position-relative">
@@ -77,172 +483,56 @@
                                 <img class="img-fluid mx-auto mb-3" src="{% static 'img/ctfc_logo.jpg' %}" style="width: 300px;">
                             </div>
                         </div>
-        
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.uc.cl/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/puc.png' %}" style="width: 180px;">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.ucm.es/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/ucm.png' %}" style="width: 180px;">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.udec.cl/pexterno/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/uconce.png' %}" style="width: 180px;">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.uef.fi/en">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/uef.jpg' %}" style="width: 180px;">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="team-item">
+                    <a href="https://www.corma.cl/">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid mx-auto mb-3" src="{% static 'img/corma_.png' %}" style="width: 350px;">
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-{% if directors %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Directores</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for director in directors %} 
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' director.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ director.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if director.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if director.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if director.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ director.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ director.name }} {{ director.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-{% if investigators %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Investigadores</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for investigator in investigators %} 
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' investigator.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ investigator.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if investigator.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ investigator.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if investigator.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ investigator.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if investigator.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ investigator.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ investigator.name }} {{ investigator.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-{% if thesists %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Tesistas</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for thesist in thesists %}
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' thesist.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ thesist.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if thesist.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if thesist.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if thesist.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ thesist.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ thesist.name }} {{ thesist.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-
-{% if unactives %}
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Miembros anteriores</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                {% for unactive in unactives %}
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{% url 'researcher' unactive.id %}">
-                            <div class="team-item bg-light">
-                                <div class="overflow-hidden">
-                                    <img class="img-fluid" src="{{ unactive.photo.url }}" alt="">
-                                </div>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                    <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                        {% if unactive.github %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.github }}"><i class="fab fa-github fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if unactive.linkedin %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
-                                        {% endif %}
-                                        {% if unactive.google_scholar %}
-                                        <a class="btn btn-sm-square btn-primary mx-1" href="{{ unactive.google_scholar }}"><i class="fa fa-graduation-cap fa-lg"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">{{ unactive.name }} {{ unactive.last_name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-{% endif %}
 
 {% endblock %}

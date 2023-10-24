@@ -5,8 +5,8 @@
 <div class="container-xxl py-5 text-center">
         <h4>{{ researcher.name }} {{ researcher.last_name }} </h4>
     <div>
-        <img class="border p-2 mx-auto mb-3" src="{{ researcher.photo.url }}">
-        <h4>Biografía:</h4>
+        <img class="border p-2 mx-auto mb-3 " width="25%" src="{{ researcher.photo.url }}">
+        <h4>Bio:</h4>
         <div class="card">
             <div class="card-body">
                 <p class="text-justify">{{ researcher.bio|linebreaks }}</p>
@@ -15,10 +15,7 @@
         </div>     
     </div>
     <div>
-        <span class="reverse">{{ researcher.mail }}</span>
-    </div>
-    <div>
-        <span class="reverse">{{ researcher.phone }}</span>
+        {{ mail }} [at] {{ domain }}
     </div>
 
 
@@ -44,7 +41,7 @@
     {% endif %}
     
     {% if researcher.projects.all %}
-        <h4>Proyectos:</h4>
+        <h4>Projects:</h4>
         {% for project in researcher.projects.all %}
             <div>
                 <a href="{% url 'project' project.id %}">{{ project.name }}</a>
@@ -53,7 +50,7 @@
     {% endif %}
     
     {% if researcher.research_line.all %}
-        <h4>Lineas de investigacion:</h4>
+        <h4>Research lines:</h4>
         {% for research in researcher.research_line.all %}
             <div>
                 <a href="{% url 'research' research.id %}">{{ research.name }}</a>
@@ -62,7 +59,7 @@
     {% endif %}
     
     {% if researcher.news.all %}
-        <h4>Noticias:</h4>
+        <h4>Featured in:</h4>
         {% for new in researcher.news.all %}
             <div>
                 <a href="{% url 'new' new.id %}">{{ new.title }}</a>

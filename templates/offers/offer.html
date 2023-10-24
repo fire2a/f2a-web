@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} | {{ offer.name }} {% endblock %}
+{% block page_name %} {{ paper.name }} {% endblock %}
+{% block content %}
+<div class="container-xxl py-5 text-center">
+    <div class="container">
+        <div>
+            <h2>{{ offer.name }} ({{ offer.get_offer_status_display|upper }})</h2>
+            <h4>Description:</h4>
+            <div class="wow fadeInUp" data-wow-delay="0.3s">
+                <p class="mb-4">{{ offer.description|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <h5>Publication date: {{ offer.pub_date }}</h5>
+        </div>
+        {% if offer.payed %}
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <h5>Remuneration: {{ offer.pay|intcomma }} CLP</h5>
+        </div>
+        {% else %}
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <h5>Not remunerated</h5>
+        </div>
+        {% endif %}
+    </div>
+    {% if offer.project.all %}
+    <div class="wow fadeInUp" data-wow-delay="0.3s">
+        <h5>Related projects:</h5>
+        {% for project in offer.project.all %}
+            <div>
+                <a href="{% url 'project' project.id %}">{{ project.name }}</a>
+            </div>    
+        {% endfor %}
+    </div>
+        
+    {% endif %}
+</div>
+
+{% endblock %}
